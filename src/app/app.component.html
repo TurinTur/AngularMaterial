@@ -46,4 +46,79 @@
     <mat-form-field class="example-full-width">
       <textarea matInput placeholder="Leave a comment"></textarea>
     </mat-form-field>
+    
   </form>
+
+  <p>
+
+<mat-form-field >
+  <textarea matInput matTextareaAutosize placeholder="Leave a comment autosize " rows="3"></textarea>
+</mat-form-field>
+<p>
+
+<form class="example-form">
+  <mat-form-field>
+      <!-- Limitamos el rango que maneja el Datepicker con min y max --> <!-- Cuando gane el foco, abrir el picker -->
+    <input 
+    [min]="minDate" [max]="maxDate"     
+    (focus)="picker.open()"                                         
+    matInput [matDatepicker]="picker" placeholder="Choose a date">       <!-- La fecha se guardará en este input -->
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>    <!-- El botón para activar el datepicker -->
+    <!-- <button matSuffix [matDatePicker]="picker"></button> -->        <!--   NO FUNCIONA. Forma antigua de hacerlo? ahora se usa mat-datepicker-toggle -->
+    <mat-datepicker #picker touchUi="true"></mat-datepicker>                  <!--  #picker sirve para vincularlo al input. touchUi es una versión del calendario mas grande -->
+  </mat-form-field>
+</form>
+<p>
+  
+
+<mat-form-field>
+    <input matInput [matDatepicker]="dp" [(ngModel)]="date2">         <!-- He usado el dateAdapter para vincularlo con una fecha de moment.js -->
+    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+    <mat-datepicker #dp></mat-datepicker>
+</mat-form-field>
+<p>
+<mat-icon>add_alert</mat-icon>      <!-- "add alert" icon. ir a https://material.io/tools/icons/?style=baseline -->   
+<mat-icon>add</mat-icon>           <!--  Colorea con css -->
+<mat-icon>error</mat-icon>
+
+<button mat-button>Button </button>
+<button mat-raised-button>Button raised</button>
+<button color="primary" mat-raised-button>Button raised primary</button>
+<button color="aceent" mat-raised-button>Button raised accent</button>
+<button color="warn" mat-raised-button>Button raised warn</button>
+<p></p>
+<button mat-stroked-button>Button stroked</button>
+<button mat-icon-button>Button iconbutton</button>
+<button mat-fab><mat-icon>check</mat-icon></button>                <!--  flotable action icon. funcionan con iconos -->
+<button mat-mini-fab><mat-icon>check</mat-icon></button>
+
+<p>
+<mat-chip-list>
+   <mat-chip selected="true" color="accent">One chip</mat-chip>
+   <mat-chip>Two chips</mat-chip>
+</mat-chip-list>
+<p>
+    <!--  Tenemos que deseleccionar el chip para seleccionar otro. Lo hacemos con la función selectCategory -->
+<mat-chip-list>           
+     <mat-chip *ngFor="let cat of categoriesChips"         
+     (click)="selectCategory(cat)"
+     [selected]="cat.selected">
+     {{cat.name}}</mat-chip>
+</mat-chip-list>
+<p>
+
+<mat-spinner *ngIf="isLoading"></mat-spinner>   <!--   Spinner y progress-spiner son lo mismo. mode indeterminate por defecto -->
+<p>
+<mat-progress-spinner
+    mode="determinate"
+    value="20">
+</mat-progress-spinner>
+<p>
+</p>
+<span matTooltip="y esta es la tooltip">Esto es un span con tooltip</span><br>
+<span matTooltip="y esta es la tooltip" matTooltipPosition="right">Esto es un span con tooltip a la derecha</span>
+<p></p>
+<mat-tab-group>
+  <mat-tab label="x">Esto es la tab 1</mat-tab>
+  <mat-tab label="y">Esto es la tab 2</mat-tab>
+</mat-tab-group>

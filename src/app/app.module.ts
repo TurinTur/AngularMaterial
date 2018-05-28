@@ -7,8 +7,11 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatIconModule, MatButtonModule, MatChipsModule, MatProgressSpinnerModule, MatTooltipModule, MatTabsModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import {MatInputModule} from '@angular/material/input';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatCheckboxModule, MatRadioModule,MatSelectModule,MatInputModule
+    MatCheckboxModule, MatRadioModule,MatSelectModule,MatInputModule,MatDatepickerModule, MatNativeDateModule, MatMomentDateModule, MatButtonModule,
+    MatChipsModule, MatProgressSpinnerModule, MatTooltipModule, MatTabsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
