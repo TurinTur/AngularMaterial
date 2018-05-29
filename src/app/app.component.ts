@@ -1,3 +1,4 @@
+import { EditCourseComponent } from './edit-course/edit-course.component';
 import { Component } from '@angular/core';
 import { Observable,timer } from 'rxjs';
 
@@ -13,6 +14,7 @@ import * as _moment from 'moment';
 import {default as _rollupMoment} from 'moment';      //esto lo marca como error, pero funciona...
 import { FormControl } from '@angular/forms';
 import { observable } from 'rxjs';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 const moment = _rollupMoment || _moment;
 
@@ -69,15 +71,51 @@ export class AppComponent {
   }  
 
   isLoading = false;
-  constructor (){                                       /* Tras 5 segundos, oculto el spinner */
+  constructor (private dialog:MatDialog){                                       /* Tras 5 segundos, oculto el spinner */
     this.isLoading= true;
     this.getCourses()
        .subscribe( () => this.isLoading=false);
+
+    //Dialog
+
   }
 
   getCourses(){
       return timer(5000)
   }
 
+  
+  openDialog(){
+     // lama a un componente externo y lo muestra en un dialogo. Para que funciona hay que editar el app.module y poner entryComponents. opcionalmente devulve un valor
+     this.dialog.open(EditCourseComponent,{
+        data: {courseId:1}     // Cualquier tipo de parametros que se quiera pasar al dialogo destino
+     })
+      .afterClosed()
+      .subscribe(result => console.log(result));
 
+  }
+
+ // para Table
+ displayedColumns = ['position', 'name', 'weight', 'symbol'];
+ dataSource = ELEMENT_DATA;
 }
+
+export interface PeriodicElement {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+}
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
+  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
+  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
+  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
+  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
+  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
+  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
+  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
+  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
+  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+];

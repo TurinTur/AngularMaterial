@@ -48,7 +48,6 @@
     </mat-form-field>
     
   </form>
-<<<<<<< HEAD
 
   <p>
 
@@ -123,11 +122,43 @@
   <mat-tab label="x">Esto es la tab 1</mat-tab>
   <mat-tab label="y">Esto es la tab 2</mat-tab>
 </mat-tab-group>
-=======
 <p>
-<mat-input-container>
-  <text-area matInput matTextareaAutosize rows="2"></text-area>
-</mat-input-container>
-  
- 
->>>>>>> 1e8ba28acbd5091660ded4aa7f13217ebaa3977e
+</p>
+<button  mat-raised-button (click)="openDialog()">Open dialog</button>
+
+<p>
+
+</p>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef> Weight </th>
+    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
